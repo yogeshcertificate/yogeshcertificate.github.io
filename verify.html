@@ -5,16 +5,16 @@
 <div id="box"></div>
 <script>
 const students = {
-  "CERT-002": ["Pritam Patil", "MS Excel"],
-  "CERT-003": ["Dusra Nav", "Tally"],
-  "CERT-004": ["Tisra Nav", "DCA"],
-  "CERT-005": ["Nav 5", "DCA"],
-  "CERT-006": ["Nav 6", "DCA"],
-  "CERT-007": ["Nav 7", "DCA"],
-  "CERT-008": ["Nav 8", "DCA"],
-  "CERT-009": ["Nav 9", "DCA"],
-  "CERT-010": ["Nav 10", "DCA"],
-  "CERT-011": ["Nav 11", "DCA"]
+  "CERT-001": ["Rahul kishor", "web developer", "05-11-2026"],
+  "CERT-002": ["Pritam Patil", "ms excel", "05-11-2026"],
+  "CERT-003": ["Aniket Jadhav", "designer", "05-11-2026"],
+  "CERT-004": ["Sneha Deodhar", "Google Space", "05-11-2026"],
+  "CERT-005": ["Anil More", "web developer", "05-11-2026"],
+  "CERT-006": ["Pooja Pandey", "ms excel", "05-11-2026"],
+  "CERT-007": ["Rohan Kale", "Google Space", "05-11-2026"],
+  "CERT-008": ["Amruta Shinde", "ms excel", "05-11-2026"],
+  "CERT-009": ["Sunil Mane", "web developer", "05-11-2026"],
+  "CERT-010": ["Anjana Kamble", "Data Entry", "05-11-2026"]
 };
 
 const id = new URLSearchParams(window.location.search).get("id");
@@ -22,7 +22,7 @@ const s = students[id];
 const box = document.getElementById("box");
 
 if(s){
-  box.innerHTML = `<h1 style="color:green;">✅ VERIFIED</h1><h2>${s[0]}</h2><p>Course: ${s[1]}</p><p>ID: ${id}</p><p>Yogesh Computer Institute</p>`;
+  box.innerHTML = `<h1 style="color:green;">✅ VERIFIED</h1><h2>${s[0]}</h2><p>Course: ${s[1]}</p><p>ID: ${id}</p><p>Date: ${s[2]}</p><p>Yogesh Computer Institute</p>`;
 } else {
   box.innerHTML = `<h1 style="color:red;">❌ NOT VERIFIED</h1><p>ID sapadla nahi: ${id}</p>`;
 }
