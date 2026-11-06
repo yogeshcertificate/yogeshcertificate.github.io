@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>Verify Certificate</title></head>
-<body style="text-align:center; font-family:Arial; padding:50px;">
+<body style="text-align:center; font-family:Arial; padding:30px;">
 <div id="box"></div>
 <script>
 const students = {
@@ -18,13 +18,19 @@ const students = {
 };
 
 const id = new URLSearchParams(window.location.search).get("id");
-const s = students[id];
 const box = document.getElementById("box");
 
-if(s){
-  box.innerHTML = `<h1 style="color:green;">✅ VERIFIED</h1><h2>${s[0]}</h2><p>Course: ${s[1]}</p><p>ID: ${id}</p><p>Date: ${s[2]}</p><p>Yogesh Computer Institute</p>`;
+if(id && students[id]){
+  let s = students[id];
+  box.innerHTML = `<h1 style="color:green;">✅ VERIFIED</h1><h2>${s[0]}</h2><p>Course: ${s[1]}</p><p>ID: ${id}</p><p>Date: ${s[2]}</p><p>Yogesh Computer Institute</p><br><a href="verify.html">← Saglyanchi List Bagha</a>`;
 } else {
-  box.innerHTML = `<h1 style="color:red;">❌ NOT VERIFIED</h1><p>ID sapadla nahi: ${id}</p>`;
+  // ID nasel tar sagle 10 auto dakhav
+  let html = `<h1>Yogesh Computer Institute</h1><h2>All Verified Certificates - 10</h2>`;
+  for(let key in students){
+    let s = students[key];
+    html += `<p style="border:1px solid #ccc; padding:10px; display:inline-block; width:280px; margin:5px;"><b>${s[0]}</b><br>${s[1]}<br>${key}<br><a href="verify.html?id=${key}">Verify Karaycha →</a></p>`;
+  }
+  box.innerHTML = html;
 }
 </script>
 </body>
