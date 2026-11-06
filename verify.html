@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verify Certificate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Arial;text-align:center;padding:20px;background:#f0f0f0}
+.box{background:white;padding:30px;border-radius:15px;max-width:400px;margin:auto;box-shadow:0 0 15px #ccc;margin-top:50px}
+.ok{color:green;font-size:30px;font-weight:bold}
+.bad{color:red;font-size:30px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="box" id="result">Checking...</div>
+<script>
+const id = new URLSearchParams(window.location.search).get('id');
+const data = {
+  "YOGESH-2026-001": "Yogesh - Web Development Course",
+  "ROHIT-2026-002": "Rohit Sharma - Python Course"
+};
+if(data[id]){
+  document.getElementById('result').innerHTML = '<div class="ok">✅ VERIFIED</div><br><h2>'+data[id]+'</h2><p>Certificate ID: '+id+'</p><p>Issued by Yogesh Certificates</p>';
+} else {
+  document.getElementById('result').innerHTML = '<div class="bad">❌ NOT VERIFIED</div><br><p>ID sapadla nahi: '+id+'</p>';
+}
+</script>
+</body>
+</html>
