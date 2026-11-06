@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Verify Certificate</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body{font-family:Arial;text-align:center;padding:20px;background:#f0f0f0}
-.box{background:white;padding:30px;border-radius:15px;max-width:400px;margin:auto;box-shadow:0 0 15px #ccc;margin-top:50px}
-.ok{color:green;font-size:30px;font-weight:bold}
-.bad{color:red;font-size:30px;font-weight:bold}
-</style>
-</head>
-<body>
-<div class="box" id="result">Checking...</div>
 <script>
-const id = new URLSearchParams(window.location.search).get('id');
-const data = {
-  "YOGESH-2026-001": "Yogesh - Web Development Course",
-  "ROHIT-2026-002": "Rohit Sharma - Python Course"
+const students = {
+  "CERT-002": ["Pritam Patil", "MS Excel"],
+  "CERT-003": ["Dusra Nav", "Tally"],
+  "CERT-004": ["Tisra Nav", "DCA"],
+  // ithe 10 nav tak
 };
-if(data[id]){
-  document.getElementById('result').innerHTML = '<div class="ok">✅ VERIFIED</div><br><h2>'+data[id]+'</h2><p>Certificate ID: '+id+'</p><p>Issued by Yogesh Certificates</p>';
+
+const id = new URLSearchParams(location.search).get("id");
+const s = students[id];
+
+if(s){
+  document.write(`<h1 style="color:green">✅ VERIFIED</h1><h2>${s[0]}</h2><p>Course: ${s[1]}</p><p>ID: ${id}</p>`);
 } else {
-  document.getElementById('result').innerHTML = '<div class="bad">❌ NOT VERIFIED</div><br><p>ID sapadla nahi: '+id+'</p>';
+  document.write(`<h1 style="color:red">❌ NOT FOUND</h1>`);
 }
 </script>
-</body>
-</html>
