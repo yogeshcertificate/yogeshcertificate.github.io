@@ -1,17 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Verify Certificate</title></head>
+<body style="text-align:center; font-family:Arial; padding:50px;">
+<div id="box"></div>
 <script>
 const students = {
   "CERT-002": ["Pritam Patil", "MS Excel"],
   "CERT-003": ["Dusra Nav", "Tally"],
   "CERT-004": ["Tisra Nav", "DCA"],
-  // ithe 10 nav tak
+  "CERT-005": ["Nav 5", "DCA"],
+  "CERT-006": ["Nav 6", "DCA"],
+  "CERT-007": ["Nav 7", "DCA"],
+  "CERT-008": ["Nav 8", "DCA"],
+  "CERT-009": ["Nav 9", "DCA"],
+  "CERT-010": ["Nav 10", "DCA"],
+  "CERT-011": ["Nav 11", "DCA"]
 };
 
-const id = new URLSearchParams(location.search).get("id");
+const id = new URLSearchParams(window.location.search).get("id");
 const s = students[id];
+const box = document.getElementById("box");
 
 if(s){
-  document.write(`<h1 style="color:green">✅ VERIFIED</h1><h2>${s[0]}</h2><p>Course: ${s[1]}</p><p>ID: ${id}</p>`);
+  box.innerHTML = `<h1 style="color:green;">✅ VERIFIED</h1><h2>${s[0]}</h2><p>Course: ${s[1]}</p><p>ID: ${id}</p><p>Yogesh Computer Institute</p>`;
 } else {
-  document.write(`<h1 style="color:red">❌ NOT FOUND</h1>`);
+  box.innerHTML = `<h1 style="color:red;">❌ NOT VERIFIED</h1><p>ID sapadla nahi: ${id}</p>`;
 }
 </script>
+</body>
+</html>
