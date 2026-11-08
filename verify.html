@@ -1,54 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Verify Certificate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Arial;text-align:center;padding:40px}
+.box{border:2px solid #0A2342;padding:30px;max-width:500px;margin:auto;border-radius:10px}
+h1{color:#0A2342}
+.ok{color:green;font-size:22px;font-weight:bold}
+.no{color:red;font-size:22px;font-weight:bold}
+</style>
 </head>
-<body style="font-family:Arial; text-align:center; padding:15px;">
-<h2>Yogesh Computer Institute</h2>
-
-<div id="box"></div>
-
+<body>
+<div class="box">
+<h1>Certificate Verification</h1>
+<div id="result">Checking...</div>
+</div>
 <script>
 const students = {
-"CERT-1001": ["Rahul Kishor", "web developer", "05-11-2026"],
-"CERT-1002": ["Pritam Patil", "ms excel", "05-11-2026"],
-"CERT-1003": ["Aniket Jadhav", "designer", "05-11-2026"],
-"CERT-1004": ["Sneha Deshmukh", "Google Space", "05-11-2026"],
-"CERT-1005": ["Anil More", "web developer", "05-11-2026"],
-"CERT-1006": ["Pooja Pandey", "ms excel", "05-11-2026"],
-"CERT-1007": ["Rohan Kale", "Google Space", "05-11-2026"],
-"CERT-1008": ["Amruta Shinde", "ms excel", "05-11-2026"],
-"CERT-1009": ["Sunil Mane", "web developer", "05-11-2026"],
-"CERT-1010": ["Anjana Kamble", "Data Entry", "05-11-2026"],
-"CERT-1011": ["Amit Sharma", "Excel Automation", "26-10-2026"],
-"CERT-1012": ["Priya Desai", "QR certificate", "25-10-2026"],
-"CERT-1013": ["Sneha Kulkarni", "Google Form", "26-10-2026"],
-"CERT-1014": ["Rahul Patil", "Excel Automation", "27-10-2026"],
-"CERT-1015": ["Vikram Joshi", "QR certificate", "28-10-2026"],
-"CERT-1016": ["Anjali Mehta", "Google Form", "29-10-2026"],
-"CERT-1017": ["Rohan Pawar", "Excel Automation", "30-10-2026"],
-"CERT-1018": ["Pooja Singh", "QR certificate", "31-10-2026"],
-"CERT-1019": ["Kiran Jadhav", "Google Form", "01-11-2026"],
-"CERT-1020": ["Neha More", "Excel Automation", "02-11-2026"]
+"CERT-1": ["Amit Sharma", "Excel Automation", "26-10-2026"],
+"CERT-2": ["Priya Desai", "QR certificate", "25-10-2026"],
+"CERT-3": ["Sneha Kulkarni", "Google Form", "26-10-2026"],
+"CERT-4": ["Rahul Patil", "Excel Automation", "27-10-2026"],
+"CERT-5": ["Vikram Joshi", "QR certificate", "28-10-2026"],
+"CERT-6": ["Anjali Mehta", "Google Form", "29-10-2026"],
+"CERT-7": ["Rohan Pawar", "Excel Automation", "30-10-2026"],
+"CERT-8": ["Pooja Singh", "QR certificate", "31-10-2026"],
+"CERT-9": ["Kiran Jadhav", "Google Form", "01-11-2026"],
+"CERT-10": ["Neha More", "Excel Automation", "02-11-2026"]
 };
-
-const id = new URLSearchParams(window.location.search).get("id");
-const box = document.getElementById("box");
-
-if (id && students[id]) {
-  let s = students[id];
-  box.innerHTML = `<h1 style="color:green;">✔ VERIFIED</h1><h2>${s[0]}</h2><p>${s[1]}</p><p>CERT ID: ${id}</p><p>Date: ${s[2]}</p>`;
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+const r = document.getElementById("result");
+if(students[id]){
+  r.innerHTML = `<p class="ok">✅ VERIFIED</p><p><b>Name:</b> ${students[id][0]}</p><p><b>Course:</b> ${students[id][1]}</p><p><b>Date:</b> ${students[id][2]}</p><p><b>ID:</b> ${id}</p>`;
 } else {
-  let html = `<h3>All Verified Certificates - ${Object.keys(students).length}</h3>`;
-  for (let key in students) {
-    let s = students[key];
-    html += `<div style="border:1px solid #ccc; padding:10px; display:inline-block; width:180px; margin:5px; vertical-align:top;">
-    <b>${s[0]}</b><br>${s[1]}<br>${key}<br>
-    <a href="?id=${key}">Verify Kara</a>
-    </div>`;
-  }
-  box.innerHTML = html;
+  r.innerHTML = `<p class="no">❌ INVALID CERTIFICATE</p><p>ID: ${id}</p>`;
 }
 </script>
 </body>
