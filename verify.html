@@ -1,41 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Verify Certificate</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verify Certificate - Yogesh Certificate</title>
 <style>
-body{font-family:Arial;text-align:center;padding:40px}
-.box{border:2px solid #0A2342;padding:30px;max-width:500px;margin:auto;border-radius:10px}
-h1{color:#0A2342}
-.ok{color:green;font-size:22px;font-weight:bold}
-.no{color:red;font-size:22px;font-weight:bold}
+body{font-family:Arial,sans-serif;background:#F9F3E8;margin:0;padding:20px;text-align:center}
+.box{max-width:620px;margin:30px auto;background:#FFFEF8;border:3px solid #A57D23;border-radius:14px;padding:35px;box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.logo{font-size:14px;letter-spacing:3px;color:#A57D23;font-weight:bold}
+h1{margin:10px 0 0;font-size:34px;color:#111}
+.sub{color:#A57D23;letter-spacing:4px;margin:5px 0 20px}
+.ok{font-size:64px}
+.verified{color:#1a7a1a;font-weight:bold;font-size:24px;margin:12px 0}
+.notfound{color:#c00;font-weight:bold;font-size:24px;margin:12px 0}
+table{margin:20px auto;text-align:left;font-size:18px;border-collapse:collapse;width:100%;max-width:480px}
+td{padding:10px 12px;border-bottom:1px solid #eee} td:first-child{color:#777;width:140px}
+.btn{display:inline-block;margin:8px 5px;background:#25D366;color:white;padding:13px 26px;border-radius:30px;text-decoration:none;font-weight:bold}
+.btn2{display:inline-block;margin:8px 5px;background:#1a3eb0;color:white;padding:13px 26px;border-radius:30px;text-decoration:none;font-weight:bold}
+small{color:#888}
 </style>
 </head>
 <body>
 <div class="box">
-<h1>Certificate Verification</h1>
-<div id="result">Checking...</div>
+<div class="logo">YOGESH CERTIFICATE • EXCEL AUTOMATION</div>
+<h1>CERTIFICATE</h1>
+<div class="sub">OF COMPLETION</div>
+<div class="ok">🏆</div>
+<div class="verified" id="status">Checking...</div>
+<table>
+<tr><td>Name</td><td><b id="name">-</b></td></tr>
+<tr><td>Course</td><td><b id="course">-</b></td></tr>
+<tr><td>Certificate No</td><td><b id="cert">-</b></td></tr>
+<tr><td>Date</td><td><b id="date">-</b></td></tr>
+<tr><td>Email</td><td><b id="email">-</b></td></tr>
+<tr><td>Status</td><td><b style="color:green">✔ VERIFIED • AUTHENTIC</b></td></tr>
+</table>
+<p>This certificate is authentic and issued by <b>Yogesh Ghatekar</b>.<br>Scan QR to verify anytime.</p>
+<a class="btn" href="https://wa.me/919740997535">📱 WhatsApp: 9740997535</a>
+<a class="btn2" href="https://yogeshcertificate.github.io">🌐 Website</a><br><br>
+<small>yogeshcertificate.github.io • ghatekaryogesh1389@gmail.com</small>
 </div>
 <script>
-const students = {
-"CERT-1": ["Amit Sharma", "Excel Automation", "26-10-2026"],
-"CERT-2": ["Priya Desai", "QR certificate", "25-10-2026"],
-"CERT-3": ["Sneha Kulkarni", "Google Form", "26-10-2026"],
-"CERT-4": ["Rahul Patil", "Excel Automation", "27-10-2026"],
-"CERT-5": ["Vikram Joshi", "QR certificate", "28-10-2026"],
-"CERT-6": ["Anjali Mehta", "Google Form", "29-10-2026"],
-"CERT-7": ["Rohan Pawar", "Excel Automation", "30-10-2026"],
-"CERT-8": ["Pooja Singh", "QR certificate", "31-10-2026"],
-"CERT-9": ["Kiran Jadhav", "Google Form", "01-11-2026"],
-"CERT-10": ["Neha More", "Excel Automation", "02-11-2026"]
+const DATA = {
+"CERT-1":{name:"Amit Sharma",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-2":{name:"Priya Desai",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-3":{name:"Rahul Patil",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-4":{name:"Sneha Kulkarni",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-5":{name:"Vikram Jadhav",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-6":{name:"Pooja Pawar",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-7":{name:"Rohan Pawar",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-8":{name:"Anjali More",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-9":{name:"Kiran Shinde",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"},
+"CERT-10":{name:"Neha More",course:"Excel Automation",date:"30-10-2026",email:"ghatekaryogesh1389@gmail.com"}
 };
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-const r = document.getElementById("result");
-if(students[id]){
-  r.innerHTML = `<p class="ok">✅ VERIFIED</p><p><b>Name:</b> ${students[id][0]}</p><p><b>Course:</b> ${students[id][1]}</p><p><b>Date:</b> ${students[id][2]}</p><p><b>ID:</b> ${id}</p>`;
+const p = new URLSearchParams(location.search);
+const id = p.get('cert');
+const d = DATA[id];
+if(d){
+ document.getElementById('name').textContent=d.name;
+ document.getElementById('course').textContent=d.course;
+ document.getElementById('cert').textContent=id;
+ document.getElementById('date').textContent=d.date;
+ document.getElementById('email').textContent=d.email;
+ document.getElementById('status').textContent="✔ VERIFIED - "+d.name;
 } else {
-  r.innerHTML = `<p class="no">❌ INVALID CERTIFICATE</p><p>ID: ${id}</p>`;
+ document.getElementById('status').textContent="❌ Certificate Not Found";
+ document.getElementById('status').className="notfound";
 }
 </script>
 </body>
