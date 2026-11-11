@@ -49,7 +49,7 @@ const DATA = {
 "CERT-5": { name: "Vishakha Gavade", course: "Excel", date: "11-11-2026", email: "yogeshcertificate01@gmail.com" },
 };
 const p = new URLSearchParams(location.search);
-const id = p.get('cert');
+const id = (p.get('cert') || p.get('id') || "").toUpperCase().replace(/\s+/g, "");
 const d = DATA[id];
 if(d){
  document.getElementById('name').textContent=d.name;
