@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verify Certificate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Arial;text-align:center;padding:30px}
+.ok{color:green;font-size:22px;font-weight:bold}
+.notfound{color:red;font-size:22px;font-weight:bold}
+.box{border:2px solid #333;padding:20px;border-radius:10px;max-width:400px;margin:auto}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Certificate Verification</h2>
+<p id="status">Checking...</p>
+<p><b>Name:</b> <span id="name"></span></p>
+<p><b>Course:</b> <span id="course"></span></p>
+<p><b>Certificate No:</b> <span id="cert"></span></p>
+<p><b>Date:</b> <span id="date"></span></p>
+<p><b>Email:</b> <span id="email"></span></p>
+<p><small>yogeshcertificate.github.io • yogeshcertificate01@gmail.com</small></p>
+</div>
+<script>
+const DATA = {
+"CERT-1": { name: "Rushabh Desai", course: "Tally", date: "11-11-2026", email: "yogeshcertificate01@gmail.com" },
+"CERT-2": { name: "Kiran Mali", course: "Excel", date: "11-11-2026", email: "yogeshcertificate01@gmail.com" },
+"CERT-3": { name: "Umesh Karande", course: "MS-Office", date: "11-11-2026", email: "yogeshcertificate01@gmail.com" },
+"CERT-4": { name: "Chetan Koushik", course: "Tally", date: "11-11-2026", email: "yogeshcertificate01@gmail.com" },
+"CERT-5": { name: "Vishakha Gavade", course: "Excel", date: "11-11-2026", email: "yogeshcertificate01@gmail.com" }
+};
+const p = new URLSearchParams(location.search);
+const id = (p.get('cert') || p.get('id') || "").toUpperCase().replace(/\s+/g, "");
+const d = DATA[id];
+if(d){
+document.getElementById('name').textContent=d.name;
+document.getElementById('course').textContent=d.course;
+document.getElementById('cert').textContent=id;
+document.getElementById('date').textContent=d.date;
+document.getElementById('email').textContent=d.email;
+document.getElementById('status').textContent="✅ VERIFIED - "+d.name;
+document.getElementById('status').className="ok";
+} else {
+document.getElementById('status').textContent="❌ Certificate Not Found";
+document.getElementById('status').className="notfound";
+}
+</script>
+</body>
+</html>
