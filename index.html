@@ -1,9 +1,59 @@
-<html>
-<body style="text-align:center;background:black;margin:0">
-<h2 style="color:white">Yogesh Adinath Ghatekari - Certificate</h2>
-<img src="certificate.jpg" style="width:100%;max-width:800px">
-<br><br>
-<a href="certificate.jpg" download style="background:blue;color:white;padding:15px 30px;text-decoration:none;border-radius:10px">Download Certificate</a>
-<p style="color:white">Place: Nipani, India</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate Verification</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6f8;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}
+.card{background:#fff;padding:30px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1);max-width:450px;width:100%;text-align:center}
+.verified{color:#16a34a;font-size:22px;font-weight:bold}
+.notfound{color:#dc2626;font-size:22px;font-weight:bold}
+.box{background:#f8fafc;padding:15px;border-radius:10px;margin-top:15px;text-align:left}
+a{color:#2563eb;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+<div id="status">Checking...</div>
+<h2 id="name"></h2>
+<p id="course"></p>
+<p id="date"></p>
+<div class="box" id="details" style="display:none">
+<p><b>Certificate ID:</b> <span id="certId"></span></p>
+<p><b>Course:</b> <span id="course2"></span></p>
+<p><b>Date:</b> <span id="date2"></span></p>
+<p><b>Status:</b> Valid</p>
+</div>
+<br>
+<a href="https://wa.me/919740997535">WhatsApp: 9740997535</a><br>
+<a href="https://yogeshcertificate.github.io">Website</a>
+</div>
+<script>
+const DATA = {
+"ID-201": { name: "Your Name Here", course: "Tally", date: "16-11-2026" },
+"ID-202": { name: "Shweta Nale", course: "Excel", date: "16-11-2026" },
+"ID-203": { name: "Akash Pawar", course: "MS Office", date: "16-11-2026" },
+"ID-204": { name: "Neha Jadhav", course: "Tally", date: "16-11-2026" },
+"ID-205": { name: "Kunal More", course: "Excel", date: "16-11-2026" },
+};
+const p = new URLSearchParams(location.search);
+const id = (p.get('cert') || p.get('id') || "").toUpperCase().replace(/\s+/g, "");
+const d = DATA[id];
+if(d){
+document.getElementById('name').textContent=d.name;
+document.getElementById('course').textContent=d.course;
+document.getElementById('date').textContent=d.date;
+document.getElementById('certId').textContent=id;
+document.getElementById('course2').textContent=d.course;
+document.getElementById('date2').textContent=d.date;
+document.getElementById('status').textContent="✓ VERIFIED - "+d.name;
+document.getElementById('status').className="verified";
+document.getElementById('details').style.display="block";
+} else {
+document.getElementById('status').textContent="✕ Certificate Not Found";
+document.getElementById('status').className="notfound";
+}
+</script>
 </body>
 </html>
